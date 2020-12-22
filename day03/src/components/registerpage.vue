@@ -25,7 +25,7 @@
             register_text:''
           }
       },
-      mounted(){//这玩意代表钩子函数，代表一旦进入本界面就执行一次init()函数，函数在下边有定义
+      mounted(){
 
       },
       methods: {

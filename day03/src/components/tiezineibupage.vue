@@ -35,7 +35,7 @@
           huitie:[],
         }
       },
-      mounted() {//这玩意代表钩子函数，代表一旦进入本界面就执行一次init()函数，函数在下边有定义
+      mounted() {//钩子函数，代表一旦进入本界面就执行一次init()函数，函数在下边有定义
         this.init();
         var tieziidfromhomepage = this.$route.query.tieziid
         this.tieziidfromhomepage = tieziidfromhomepage
@@ -49,9 +49,7 @@
         this.fatierenfromhomepage = fatierenfromhomepage
         var bankuaifromhomepage = this.$route.query.givebankuai
         this.bankuaifromhomepage = bankuaifromhomepage//这些地方都是接入了homepage页传过来的值，其中如绑定板块，和用户又使用router-linkto的方式传回给了homepage页，以便返回homepage页时登录用户以及当前板块的信息不丢失
-        this.init()//此处为神来之笔，在没有此行的情况下，程序先执行一次init()，然后才获取tieziid等值
-        //，导致init()里边var的justgo没有更新，实际为null，传回api的值为null，导致无用
-        //其实把第一行的this.init()挪到最后一行就行，这也算是一个大坑了
+        this.init();
       },
       methods: {
         init() {//很显然，是用来查询帖子内的回帖的，使用了bangdingtiezi参数来查询，其中所含的值其实是homepage传过来的唯一的帖子的id，保证了“这些回帖只属于这个帖子”

@@ -57,18 +57,15 @@
             id:'',
           }
       },
-      mounted(){//这玩意代表钩子函数，代表一旦进入本界面就执行一次init()函数，函数在下边有定义
+      mounted(){//钩子函数，代表一旦进入本界面就执行一次init()函数，函数在下边有定义
         this.init();
         var namefromloginpage = this.$route.params.namefromloginpage//用于接收由loginpage页送过来的用户名
         this.namefromloginpage = namefromloginpage//放在这钩子函数里，送过来赶紧就用上
         var bangdingbankuaifromloginpage = this.$route.params.givebangdingbankuai
         this.bangdingbankuaifromloginpage = bangdingbankuaifromloginpage
         var namefromneibupage = this.$route.query.neibugivetohomeyonghu
-        if(namefromneibupage!=null){this.namefromloginpage = namefromneibupage}//此处亦是神作
-        //你以为所谓的namefromloginpage只来自于登录页的传值吗？别忘了从帖子内部退回帖子列表的情况
-        //这种情况下会导致用户名信息的清空，所以要把帖子内部页保存的登录用户名在退回帖子列表时将
-        //用户名传回到帖子列表页，也就是homepage页，为了不和一开始从登录页传过来的用户名冲突，
-        //加个一个！=null才执行，并且将该语句放在使用loginpage页传过来的登录名语句的下边。
+        if(namefromneibupage!=null){this.namefromloginpage = namefromneibupage}
+
         var bangdingbankuaifromneibupage = this.$route.query.neibubackbankuai
         if(bangdingbankuaifromneibupage!=null){this.bangdingbankuaifromloginpage = bangdingbankuaifromneibupage}//同上，这是奇迹的延续
         this.init()
@@ -112,7 +109,6 @@
           )
         },
         gowenzhang(){//类似上方的函数，点击对应按钮后跳转到文章分享板块，不得不说，bangdingbankuaifromloginpage这个参数，绑定了5个传参
-          //那是真的牛批，接登录页，内部页，以及本页三个按钮的更改
           var params4 = {
             bangdingbankuai:'文章分享'
           }
